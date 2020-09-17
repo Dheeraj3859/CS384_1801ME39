@@ -67,4 +67,4 @@ def printHP(a,d,n):
         hp.append(round(1/den,3))
     return hp
 
-print(power(5,-2))
+
