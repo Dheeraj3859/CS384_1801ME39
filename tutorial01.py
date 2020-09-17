@@ -35,4 +35,9 @@ def printGP(a,r,n):
         gp.append(a*power(r,i))
     return gp
 
-print(printGP(2,3,5))
+def printAP(a,d,n):
+    ap = []
+    for i in range(n):
+        ap.append(a+i*d)
+    return ap
+
