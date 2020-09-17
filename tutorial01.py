@@ -28,11 +28,11 @@ def power(num1, num2): #num1 ^ num2
         for i in range(num2):
             ans = ans*num1
         return ans
-"""
+
 def printGP(a,r,n):
     gp=[]
     for i in range(n):
         gp.append(a*power(r,i))
     return gp
 
-print(printGP(2,3,5))"""
+print(printGP(2,3,5))
