@@ -41,3 +41,12 @@ def printAP(a,d,n):
         ap.append(a+i*d)
     return ap
 
+def printHP(a,d,n):
+    hp = []
+    for i in range(n):
+        den = a+i*d;
+        if den==0:
+            return 0
+        
+        hp.append(round(1/den,3))
+    return hp
