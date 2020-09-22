@@ -23,11 +23,6 @@ def median(first_list):
     return round(first_list[n/2],3)
 
 
-# Function to compute Standard deviation. You cant use Python functions
-def standard_deviation(first_list):
-    # Standard deviation Logic
-    return standard_deviation_value
-
 
 # Function to compute variance. You cant use Python functions
 def variance(first_list):
@@ -39,6 +34,13 @@ def variance(first_list):
         num=num+(val-Mean)*(val-Mean)
 
     return round(num/n,3)
+
+# Function to compute Standard deviation. You cant use Python functions
+def standard_deviation(first_list):
+    # Standard deviation Logic
+    val=variance(first_list)
+    ans=sqrt(val)
+    return round(ans,3)
 
 
 # Function to compute RMSE. You cant use Python functions
