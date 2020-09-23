@@ -5,21 +5,25 @@ import math
 def summation(first_list):
     # sum Logic
     for val in first_list:
-    	if isinstance(val,int)==False and isinstance(val,float)==False:
+    	if isinstance(val,int)==True or isinstance(val,float)==True:
+    		continue
+    	else:
     		return 0
     sum=0
     for val in first_list:
         sum+=val
 
-    return round(sum,3)
+    return sum
 def mean(first_list):
     # mean Logic
     for val in first_list:
-    	if isinstance(val,int)==False and isinstance(val,float)==False:
+    	if isinstance(val,int)==True or isinstance(val,float)==True:
+    		continue
+    	else:
     		return 0
     sum=summation(first_list)    		
     n=len(first_list)
-    return round(sum/n,6)
+    return sum/n
 
 def sorting(first_list):
     # Sorting Logic
@@ -35,14 +39,16 @@ def sorting(first_list):
 def median(first_list):
     # median Logic
     for val in first_list:
-    	if isinstance(val,int)==False and isinstance(val,float)==False:
+    	if isinstance(val,int)==True or isinstance(val,float)==True:
+    		continue
+    	else:
     		return 0
     n=len(first_list)
     new_list=sorting(first_list)
     if n%2==0:
     	ind1=(n-1)//2
     	ind2=n//2
-    	return round((new_list[ind1]+new_list[ind2])/2,2)
+    	return round((new_list[ind1]+new_list[ind2])/2,6)
     else:
     	return round(new_list[n//2],6)
 
@@ -52,7 +58,9 @@ def median(first_list):
 def variance(first_list):
     # variance Logic
     for val in first_list:
-    	if isinstance(val,int)==False and isinstance(val,float)==False:
+    	if isinstance(val,int)==True or isinstance(val,float)==True:
+    		continue
+    	else:
     		return 0
     Mean=mean(first_list)
     num=0
@@ -61,17 +69,19 @@ def variance(first_list):
     	num+=(val-Mean)*(val-Mean)
         
 
-    return round(num/n,6)
+    return num/n
 
 # Function to compute Standard deviation. You cant use Python functions
 def standard_deviation(first_list):
     # Standard deviation Logic
     for val in first_list:
-    	if isinstance(val,int)==False and isinstance(val,float)==False:
+    	if isinstance(val,int)==True or isinstance(val,float)==True:
+    		continue
+    	else:
     		return 0
     val=variance(first_list)
     ans=math.sqrt(val)
-    return round(ans,6)
+    return ans
 
 # Function to compute mse. You cant use Python functions
 def mse(first_list, second_list):
@@ -81,16 +91,20 @@ def mse(first_list, second_list):
     if n1!=n2:
     	return 0
     for v1 in first_list:
-    	if isinstance(v1,int)==False and isinstance(v1,float)==False:
+    	if isinstance(v1,int)==True or isinstance(v1,float)==True:
+    		continue
+    	else:
     		return 0
     for v2 in second_list:
-    	if isinstance(v2,int)==False and isinstance(v2,float)==False:
+    	if isinstance(v2,int)==True or isinstance(v2,float)==True:
+    		continue
+    	else:
     		return 0
     num=0
     for i in range(n1):
     	num+=(first_list[i]-second_list[i])*(first_list[i]-second_list[i])
 
-    return round(num/n1,6)
+    return num/n1
 
 # Function to compute RMSE. You cant use Python functions
 def rmse(first_list, second_list):
@@ -100,14 +114,18 @@ def rmse(first_list, second_list):
     if n1!=n2:
     	return 0
     for v1 in first_list:
-    	if isinstance(v1,int)==False and isinstance(v1,float)==False:
+    	if isinstance(v1,int)==True or isinstance(v1,float)==True:
+    		continue
+    	else:
     		return 0
     for v2 in second_list:
-    	if isinstance(v2,int)==False and isinstance(v2,float)==False:
+    	if isinstance(v2,int)==True or isinstance(v2,float)==True:
+    		continue
+    	else:
     		return 0
     Mse=mse(first_list,second_list)
 
-    return round(math.sqrt(Mse),6)
+    return math.sqrt(Mse)
 
 
 
@@ -121,16 +139,20 @@ def mae(first_list, second_list):
     if n1!=n2:
     	return 0
     for v1 in first_list:
-    	if isinstance(v1,int)==False and isinstance(v1,float)==False:
+    	if isinstance(v1,int)==True or isinstance(v1,float)==True:
+    		continue
+    	else:
     		return 0
     for v2 in second_list:
-    	if isinstance(v2,int)==False and isinstance(v2,float)==False:
+    	if isinstance(v2,int)==True or isinstance(v2,float)==True:
+    		continue
+    	else:
     		return 0
     num=0
     for i in range(n1):
     	num+=abs(first_list[i]-second_list[i])
 
-    return round(num/n1,6)
+    return num/n1
 
 
 # Function to compute NSE. You cant use Python functions
@@ -141,14 +163,19 @@ def nse(first_list, second_list):
     if n1!=n2:
     	return 0
     for v1 in first_list:
-    	if isinstance(v1,int)==False and isinstance(v1,float)==False:
+    	if isinstance(v1,int)==True or isinstance(v1,float)==True:
+    		continue
+    	else:
     		return 0
     for v2 in second_list:
-    	if isinstance(v2,int)==False and isinstance(v2,float)==False:
+    	if isinstance(v2,int)==True or isinstance(v2,float)==True:
+    		continue
+    	else:
     		return 0
     var=variance(first_list)
     Mse=mse(first_list,second_list)
-    return round(1-(Mse/var),6)
+    va=Mse/var
+    return 1-va
 
 
 # Function to compute Pearson correlation coefficient. You cant use Python functions
@@ -159,10 +186,14 @@ def pcc(first_list, second_list):
     if n1!=n2:
     	return 0
     for v1 in first_list:
-    	if isinstance(v1,int)==False and isinstance(v1,float)==False:
+    	if isinstance(v1,int)==True or isinstance(v1,float)==True:
+    		continue
+    	else:
     		return 0
     for v2 in second_list:
-    	if isinstance(v2,int)==False and isinstance(v2,float)==False:
+    	if isinstance(v2,int)==True or isinstance(v2,float)==True:
+    		continue
+    	else:
     		return 0
     num=0
     mean_x=mean(first_list)
@@ -179,14 +210,16 @@ def pcc(first_list, second_list):
     den2=math.sqrt(den2)
     den=den1*den2
 
-    return round(num/den,6)
+    return num/den
 
 
 # Function to compute Skewness. You cant use Python functions
 def skewness(first_list):
     # Skewness Logic
     for val in first_list:
-    	if isinstance(val,int)==False and isinstance(val,float)==False:
+    	if isinstance(val,int)==True or isinstance(val,float)==True:
+    		continue
+    	else:
     		return 0
     var=standard_deviation(first_list)
     Mean=mean(first_list)
@@ -195,7 +228,7 @@ def skewness(first_list):
     for val in first_list:
     	tem=(val-Mean)/var
     	num+=tem*tem*tem
-    return round(num/n,6)
+    return num/n
     
 
 
@@ -203,7 +236,9 @@ def skewness(first_list):
 def kurtosis(first_list):
     # Kurtosis Logic
     for val in first_list:
-    	if isinstance(val,int)==False and isinstance(val,float)==False:
+    	if isinstance(val,int)==True or isinstance(val,float)==True:
+    		continue
+    	else:
     		return 0
     var=standard_deviation(first_list)
     Mean=mean(first_list)
@@ -213,7 +248,7 @@ def kurtosis(first_list):
     	tem=(val-Mean)/var
     	num+=tem*tem*tem*tem
 
-    return round(num/n,6)
+    return num/n
 
 
 
