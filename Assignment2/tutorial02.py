@@ -5,7 +5,10 @@ def mean(first_list):
     # mean Logic
     sum=0
     for i in first_list:
-        sum=sum+i
+    	if isinstance(i,int)==False and isinstance(i,float)==False:
+    		return 0
+    	else:
+    		sum=sum+i
     n=len(first_list)
     return round(sum/n,3)
 
@@ -13,6 +16,9 @@ def mean(first_list):
 # Function to compute median. You cant use Python functions
 def median(first_list):
     # median Logic
+    for val in first_list:
+    	if isinstance(val,int)==False and isinstance(val,float)==False:
+    		return 0
     n=len(first_list)
     for i in range(n-1):
         for j in range(n-i-1):
@@ -31,7 +37,11 @@ def variance(first_list):
     num=0
     n=len(first_list)
     for val in first_list:
-        num=num+(val-Mean)*(val-Mean)
+    	if isinstance(val,int) or isinstance(val,float):
+    		num=num+(val-Mean)*(val-Mean)
+    	else:
+    		return 0
+        
 
     return round(num/n,3)
 
