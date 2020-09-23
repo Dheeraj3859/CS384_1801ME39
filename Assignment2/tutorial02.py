@@ -48,6 +48,9 @@ def variance(first_list):
 # Function to compute Standard deviation. You cant use Python functions
 def standard_deviation(first_list):
     # Standard deviation Logic
+    for val in first_list:
+    	if isinstance(val,int)==False and isinstance(val,float)==False:
+    		return 0
     val=variance(first_list)
     ans=sqrt(val)
     return round(ans,3)
@@ -56,7 +59,21 @@ def standard_deviation(first_list):
 # Function to compute RMSE. You cant use Python functions
 def rmse(first_list, second_list):
     # RMSE Logic
-    return rmse_value
+    n1=len(first_list)
+    n2=len(second_list)
+    if n1!=n2:
+    	return 0
+    for v1 in first_list:
+    	if isinstance(v1,int)==False and isinstance(v1,float)==False:
+    		return 0
+    for v2 in first_list:
+    	if isinstance(v2,int)==False and isinstance(v2,float)==False:
+    		return 0
+    num=0
+    for i in range(n):
+    	num=num+(first_list[i]-second_list[i])*(first_list[i]-second_list[i])
+
+    return round(sqrt(num/n),3)
 
 
 # Function to compute mse. You cant use Python functions
