@@ -79,7 +79,18 @@ def rmse(first_list, second_list):
 # Function to compute mse. You cant use Python functions
 def mse(first_list, second_list):
     # mse Logic
-    return mse_value
+    n1=len(first_list)
+    n2=len(second_list)
+    if n1!=n2:
+    	return 0
+    for v1 in first_list:
+    	if isinstance(v1,int)==False and isinstance(v1,float)==False:
+    		return 0
+    for v2 in first_list:
+    	if isinstance(v2,int)==False and isinstance(v2,float)==False:
+    		return 0
+    val = rmse(first_list,second_list)
+    return round(val*val,3)
 
 
 # Function to compute mae. You cant use Python functions
