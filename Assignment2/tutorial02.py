@@ -165,7 +165,17 @@ def pcc(first_list, second_list):
 # Function to compute Skewness. You cant use Python functions
 def skewness(first_list):
     # Skewness Logic
-    return skewness_value
+    for val in first_list:
+    	if isinstance(val,int)==False and isinstance(val,float)==False:
+    		return 0
+    var=variance(first_list)
+    Mean=mean(first_list)
+    num=0
+    n=len(first_list)
+    for val in first_list:
+    	num=num+((val-Mean)*(val-Mean)*(val-Mean))/var
+
+    return round(num/n,3)
     
 def sorting(first_list):
     # Sorting Logic
@@ -181,6 +191,8 @@ def sorting(first_list):
 # Function to compute Kurtosis. You cant use Python functions
 def kurtosis(first_list):
     # Kurtosis Logic
+    
+
     return kurtosis_value
 
 
