@@ -66,14 +66,14 @@ def rmse(first_list, second_list):
     for v1 in first_list:
     	if isinstance(v1,int)==False and isinstance(v1,float)==False:
     		return 0
-    for v2 in first_list:
+    for v2 in second_list:
     	if isinstance(v2,int)==False and isinstance(v2,float)==False:
     		return 0
     num=0
-    for i in range(n):
+    for i in range(n1):
     	num=num+(first_list[i]-second_list[i])*(first_list[i]-second_list[i])
 
-    return round(sqrt(num/n),3)
+    return round(sqrt(num/n1),3)
 
 
 # Function to compute mse. You cant use Python functions
@@ -86,7 +86,7 @@ def mse(first_list, second_list):
     for v1 in first_list:
     	if isinstance(v1,int)==False and isinstance(v1,float)==False:
     		return 0
-    for v2 in first_list:
+    for v2 in second_list:
     	if isinstance(v2,int)==False and isinstance(v2,float)==False:
     		return 0
     val = rmse(first_list,second_list)
@@ -96,7 +96,21 @@ def mse(first_list, second_list):
 # Function to compute mae. You cant use Python functions
 def mae(first_list, second_list):
     # mae Logic
-    return mae_value
+    n1=len(first_list)
+    n2=len(second_list)
+    if n1!=n2:
+    	return 0
+    for v1 in first_list:
+    	if isinstance(v1,int)==False and isinstance(v1,float)==False:
+    		return 0
+    for v2 in second_list:
+    	if isinstance(v2,int)==False and isinstance(v2,float)==False:
+    		return 0
+    num=0
+    for i in range(n1):
+    	num=num+abs(first_list[i]-second_list[i])
+
+    return round(num/n1,3)
 
 
 # Function to compute NSE. You cant use Python functions
@@ -136,6 +150,9 @@ def kurtosis(first_list):
 # Function to compute sum. You cant use Python functions
 def summation(first_list):
     # sum Logic
+    for val in first_list:
+    	if isinstance(val,int)==False and isinstance(val,float)==False:
+    		return 0
     sum=0
     for val in first_list:
         sum=sum+val
