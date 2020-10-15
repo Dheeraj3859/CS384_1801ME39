@@ -2237,7 +2237,7 @@ def country():
                     lst.append(row[keys])
                 csvwriter.writerow(lst)
 
-country()
+#country()
 
 """
 
@@ -2245,11 +2245,22 @@ def email_domain_extract():
     # Read csv and process
     pass
 
-
+"""
 def gender():
     # Read csv and process
-    pass
-
+    with open('studentinfo_cs384.csv') as file:
+        reader=csv.DictReader(file)
+        for row in reader:
+            gend=row['gender']
+            path1=os.path.join(path,'gender')
+            with open(os.path.join(path1,gend),'a+') as fi:
+                csvwriter=csv.writer(fi)
+                lst=[]
+                for keys in row:
+                    lst.append(row[keys])
+                csvwriter.writerow(lst)
+    
+gender()
 
 def dob():
     # Read csv and process
@@ -2270,4 +2281,3 @@ def blood_group():
 def new_file_sort():
     # Read csv and process
     pass
-"""
