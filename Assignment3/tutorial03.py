@@ -2369,12 +2369,41 @@ def dob():
                         lst.append(row[keys])
                     csvwriter.writerow(lst)
 
-dob()  
+#dob()  
 
 
 def state():
     # Read csv and process
-    pass
+    temp=os.path.join(path,'state')
+    if os.path.exists(temp)==False:
+        os.mkdir(temp)
+    with open('studentinfo_cs384.csv') as file:
+        reader=csv.DictReader(file)
+        for row in reader:
+            sta=row['state']
+            path1=os.path.join(path,'state')
+            file_name=sta+'.csv'
+            if os.path.exists(os.path.join(path1,file_name))==True:
+                with open(os.path.join(path1,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    lst=[]
+                    for keys in row:
+                        lst.append(row[keys])
+                    csvwriter.writerow(lst)
+            else:
+                with open(os.path.join(path1,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    csvwriter.writerow(['id','full_name','country','email','gender','dob','blood_group','state'])
+                    lst=[]
+                    for keys in row:
+                        lst.append(row[keys])
+                    csvwriter.writerow(lst)
+
+
+state()
+
+
+    
 
 
 def blood_group():
