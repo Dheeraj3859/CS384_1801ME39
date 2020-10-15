@@ -1,6 +1,7 @@
 import csv
 import os
 import operator
+import shutil
 import re
 path="/home/manunem3859/Desktop/lab_personal/Assignment3/analytics"
 
@@ -13,6 +14,17 @@ def getString(x):
         return 'msc'
     elif x=="21":
         return 'phd'
+
+def del_create_analytics_folder():
+    # del the analytics folder including subfolder
+
+    if os.path.exists(path)==True:
+        shutil.rmtree(path)
+        os.mkdir(path)
+    else:
+        os.mkdir(path)
+    # mkdir the analytics folder (only mkdir)
+
 
 def course():
     fieldnames=['id','full_name','country','email','gender','dob','blood_group','state']
@@ -57,8 +69,7 @@ def course():
                         lst.append(row[keys])
                     csvwriter.writerow(lst)
 
-
-course()
+#course()
     
 def country():
     # Read csv and process
@@ -67,6 +78,8 @@ def country():
         for row in reader:
             Country=row['country']
             path1=os.path.join(path,'country')
+            if os.path.exists(path1)==False:
+                os.mkdir(path1)
             file_name=Country+'.csv'
             if os.path.exists(os.path.join(path1,file_name))==True:
                 with open(os.path.join(path1,file_name),'a+') as fi:
@@ -78,16 +91,13 @@ def country():
             else:
                 with open(os.path.join(path1,file_name),'a+') as fi:
                     csvwriter=csv.writer(fi)
-                    csvwriter.writeheader(['id','full_name','country','email','gender','dob','blood_group','state'])
+                    csvwriter.writerow(['id','full_name','country','email','gender','dob','blood_group','state'])
                     lst=[]
                     for keys in row:
                         lst.append(row[keys])
                     csvwriter.writerow(lst)
-
             
-
 #country()
-
 
 def fun(st):
     i=0
@@ -207,7 +217,6 @@ def dob():
 
 #dob()  
 
-
 def state():
     # Read csv and process
     temp=os.path.join(path,'state')
@@ -238,10 +247,6 @@ def state():
 
 #state()
 
-
-    
-
-
 def blood_group():
     # Read csv and process
     temp=os.path.join(path,'blood_group')
@@ -270,8 +275,6 @@ def blood_group():
                     csvwriter.writerow(lst)
 
 
-    
-
 #blood_group()
 # Create the new file here and also sort it in this function only.
 def fun1():
@@ -279,7 +282,6 @@ def fun1():
         reader=csv.DictReader(file)
         for row in reader:
             print(row)
-
 
 
 def new_file_sort():
@@ -336,6 +338,16 @@ def new_file_sort():
                     csvwriter.writerow(new_field_names)
                     csvwriter.writerow(lst)
 
-
-    
 #new_file_sort()
+
+del_create_analytics_folder()
+course()
+country()
+email_domain_extract()
+gender()
+dob()
+state()
+blood_group()
+new_file_sort()
+
+
