@@ -2,6 +2,7 @@ import csv
 import os
 
 path="/home/manunem3859/Desktop/lab_personal/Assignment3/analytics"
+
 print(os.getcwd())
 
 def course():
@@ -2230,25 +2231,79 @@ def country():
         for row in reader:
             Country=row['country']
             path1=os.path.join(path,'country')
-            with open(os.path.join(path1,Country),'a+') as fi:
-                csvwriter=csv.writer(fi)
-                lst=[]
-                for keys in row:
-                    lst.append(row[keys])
-                csvwriter.writerow(lst)
+            file_name=Country+'.csv'
+            if os.path.exists(os.path.join(path1,file_name))==True:
+                with open(os.path.join(path1,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    lst=[]
+                    for keys in row:
+                        lst.append(row[keys])
+                    csvwriter.writerow(lst)
+            else:
+                with open(os.path.join(path1,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    csvwriter.writeheader(['id','full_name','country','email','gender','dob','blood_group','state'])
+                    lst=[]
+                    for keys in row:
+                        lst.append(row[keys])
+                    csvwriter.writerow(lst)
+
+            
 
 #country()
 
-"""
+
+def fun(st):
+    i=0
+    for c in st:
+        if c=='@':
+            i+=1
+            break
+        else:
+            i+=1
+    str=""
+    while st[i]!='.':
+        str+=st[i]
+        i+=1
+    return str
+
+        
 
 def email_domain_extract():
     # Read csv and process
-    pass
+    temp=os.path.join(path,'email_domain')
+    if os.path.exists(temp)==False:
+        os.mkdir(temp)
+    with open('studentinfo_cs384.csv','r') as file:
+        reader=csv.DictReader(file)
+        for row in reader:
+            s=row['email']
+            domain=fun(s)
+            path1=os.path.join(path,'email_domain')
+            file_name=domain+'.csv'
+            if os.path.exists(os.path.join(path1,file_name))==True:
+                with open(os.path.join(path1,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    lst=[]
+                    for keys in row:
+                        lst.append(row[keys])
+                    csvwriter.writerow(lst)
+            else:
+                with open(os.path.join(path1,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    csvwriter.writerow(['id','full_name','country','email','gender','dob','blood_group','state'])
+                    lst=[]
+                    for keys in row:
+                        lst.append(row[keys])
+                    csvwriter.writerow(lst)
 
-"""
+
+            
+email_domain_extract()
+
 def gender():
     # Read csv and process
-    with open('studentinfo_cs384.csv') as file:
+    with open('studentinfo_cs384.csv','r') as file:
         reader=csv.DictReader(file)
         for row in reader:
             gend=row['gender']
@@ -2260,7 +2315,7 @@ def gender():
                     lst.append(row[keys])
                 csvwriter.writerow(lst)
     
-gender()
+#gender()
 
 def dob():
     # Read csv and process
