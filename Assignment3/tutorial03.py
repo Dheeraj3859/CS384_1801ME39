@@ -2299,23 +2299,36 @@ def email_domain_extract():
 
 
             
-email_domain_extract()
+#email_domain_extract()
 
 def gender():
     # Read csv and process
+    temp=os.path.join(path,'gender')
+    if os.path.exists(temp)==False:
+        os.mkdir(temp)
     with open('studentinfo_cs384.csv','r') as file:
         reader=csv.DictReader(file)
         for row in reader:
             gend=row['gender']
             path1=os.path.join(path,'gender')
-            with open(os.path.join(path1,gend),'a+') as fi:
-                csvwriter=csv.writer(fi)
-                lst=[]
-                for keys in row:
-                    lst.append(row[keys])
-                csvwriter.writerow(lst)
+            file_name=gend+'.csv'
+            if os.path.exists(os.path.join(path1,file_name))==True:
+                with open(os.path.join(path1,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    lst=[]
+                    for keys in row:
+                        lst.append(row[keys])
+                    csvwriter.writerow(lst)
+            else:
+                with open(os.path.join(path1,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    csvwriter.writerow(['id','full_name','country','email','gender','dob','blood_group','state'])
+                    lst=[]
+                    for keys in row:
+                        lst.append(row[keys])
+                    csvwriter.writerow(lst)
     
-#gender()
+gender()
 
 def dob():
     # Read csv and process
