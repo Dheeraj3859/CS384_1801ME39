@@ -2328,11 +2328,48 @@ def gender():
                         lst.append(row[keys])
                     csvwriter.writerow(lst)
     
-gender()
+#gender()
 
 def dob():
     # Read csv and process
-    pass
+    temp=os.path.join(path,'dob')
+    if os.path.exists(temp)==False:
+        os.mkdir(temp)
+    with open('studentinfo_cs384.csv','r') as file:
+        reader=csv.DictReader(file)
+        for row in reader:
+            strin=row['dob']
+            li=strin.split('-')
+            birth_year=int(li[2])
+            file_name=""
+            if birth_year>=1995 and birth_year<=1999:
+                file_name+="bday_1995_1999.csv"
+            elif birth_year>=2000 and birth_year<=2004:
+                file_name+="bday_2000_2004.csv"
+            elif birth_year>=2005 and birth_year<=2009:
+                file_name+="bday_2005_2009.csv"
+            elif birth_year>=2010 and birth_year<=2014:
+                file_name+="bday_2010_2014.csv"
+            elif birth_year>=2015 and birth_year<=2020:
+                file_name+="bday_2015_2020.csv"
+            path1=os.path.join(path,'dob')
+            if os.path.exists(os.path.join(path1,file_name))==True:
+                with open(os.path.join(path1,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    lst=[]
+                    for keys in row:
+                        lst.append(row[keys])
+                    csvwriter.writerow(lst)
+            else:
+                with open(os.path.join(path1,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    csvwriter.writerow(['id','full_name','country','email','gender','dob','blood_group','state'])
+                    lst=[]
+                    for keys in row:
+                        lst.append(row[keys])
+                    csvwriter.writerow(lst)
+
+dob()  
 
 
 def state():
