@@ -2400,7 +2400,7 @@ def state():
                     csvwriter.writerow(lst)
 
 
-state()
+#state()
 
 
     
@@ -2408,9 +2408,35 @@ state()
 
 def blood_group():
     # Read csv and process
-    pass
+    temp=os.path.join(path,'blood_group')
+    if os.path.exists(temp)==False:
+        os.mkdir(temp)
+    with open('studentinfo_cs384.csv','r') as file:
+        reader=csv.DictReader(file)
+        for row in reader:
+            bg=row['blood_group']
+            path1=os.path.join(path,'blood_group')
+            file_name=bg+'.csv'
+            if os.path.exists(os.path.join(path1,file_name)):
+                with open(os.path.join(path1,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    lst=[]
+                    for keys in row:
+                        lst.append(row[keys])
+                    csvwriter.writerow(lst)
+            else:
+                with open(os.path.join(path1,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    csvwriter.writerow(['id','full_name','country','email','gender','dob','blood_group','state'])
+                    lst=[]
+                    for keys in row:
+                        lst.append(row[keys])
+                    csvwriter.writerow(lst)
 
 
+    
+
+blood_group()
 # Create the new file here and also sort it in this function only.
 def new_file_sort():
     # Read csv and process
