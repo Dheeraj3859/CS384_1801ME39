@@ -2218,15 +2218,28 @@ def course():
                     csvwriter.writerow(lst)
                 
 
-course()
+#course()
 
 
     
-"""
+
 def country():
     # Read csv and process
-    pass
+    with open('studentinfo_cs384.csv','r') as file:
+        reader=csv.DictReader(file)
+        for row in reader:
+            Country=row['country']
+            path1=os.path.join(path,'country')
+            with open(os.path.join(path1,Country),'a+') as fi:
+                csvwriter=csv.writer(fi)
+                lst=[]
+                for keys in row:
+                    lst.append(row[keys])
+                csvwriter.writerow(lst)
 
+country()
+
+"""
 
 def email_domain_extract():
     # Read csv and process
