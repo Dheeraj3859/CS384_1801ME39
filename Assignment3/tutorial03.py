@@ -4,8 +4,6 @@ import operator
 import re
 path="/home/manunem3859/Desktop/lab_personal/Assignment3/analytics"
 
-print(os.getcwd())
-
 def getString(x):
     if x=="01":
         return 'btech'
@@ -16,7 +14,7 @@ def getString(x):
     elif x=="21":
         return 'phd'
 
-def course1():
+def course():
     fieldnames=['id','full_name','country','email','gender','dob','blood_group','state']
     #branch_code=["CS","EE","ME","CB","CE","MC","MS","MT","NT","CH","HS","MA","PH"]
     stream_code=["01","11","12","21"]
@@ -60,7 +58,7 @@ def course1():
                     csvwriter.writerow(lst)
 
 
-course1()
+course()
     
 def country():
     # Read csv and process
