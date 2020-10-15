@@ -1,6 +1,6 @@
 import csv
 import os
-
+import operator
 path="/home/manunem3859/Desktop/lab_personal/Assignment3/analytics"
 
 print(os.getcwd())
@@ -2436,8 +2436,70 @@ def blood_group():
 
     
 
-blood_group()
+#blood_group()
 # Create the new file here and also sort it in this function only.
+def fun1():
+    with open('studentinfo_cs384_names_split.csv') as file:
+        reader=csv.DictReader(file)
+        for row in reader:
+            print(row)
+
+
+
 def new_file_sort():
     # Read csv and process
-    pass
+    new_field_names=['id','first_name','last_name','country','email','gender','dob','blood_group','state']
+    with open('studentinfo_cs384.csv','r') as file:
+        reader=csv.DictReader(file)
+        file_name="studentinfo_cs384_names_split.csv"
+        for row in reader:
+            Name=row['full_name'].split(' ')
+            
+            if os.path.exists(os.path.join(path,file_name))==True:
+                with open(os.path.join(path,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    lst=[]
+                    lst.append(row['id'])
+                    lst.append(Name[0])
+                    tem=""
+                    for k in range(1,len(Name)):
+                        tem+=Name[k]
+                    lst.append(tem)
+                    for i in range(3,len(new_field_names)):
+                        lst.append(row[new_field_names[i]])
+                    csvwriter.writerow(lst)
+            else:
+                with open(os.path.join(path,file_name),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    csvwriter.writerow(new_field_names)
+                    lst=[]
+                    lst.append(row['id'])
+                    lst.append(Name[0])
+                    tem=""
+                    for k in range(1,len(Name)):
+                        tem+=Name[k]
+                    lst.append(tem)
+                    for i in range(3,len(new_field_names)):
+                        lst.append(row[new_field_names[i]])
+                    csvwriter.writerow(lst)
+
+
+    with open(os.path.join(path,file_name),'r') as file1:
+        reader1=csv.DictReader(file1)
+        file_name2='studentinfo_cs384_names_split_sorted_first_name.csv'
+        new_sorted_list=sorted(reader1,key=operator.itemgetter('first_name'))
+        for row in new_sorted_list:
+            lst=row.values()
+            if os.path.exists(os.path.join(path,file_name2))==True:
+                with open(os.path.join(path,file_name2),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    csvwriter.writerow(lst)
+            else:
+                with open(os.path.join(path,file_name2),'a+') as fi:
+                    csvwriter=csv.writer(fi)
+                    csvwriter.writerow(new_field_names)
+                    csvwriter.writerow(lst)
+
+
+    
+#new_file_sort()
