@@ -3,7 +3,8 @@ import os
 import operator
 import shutil
 import re
-path="/home/manunem3859/Desktop/lab_personal/Assignment3/analytics"
+#path="/home/manunem3859/Desktop/lab_personal/Assignment3/analytics"
+path="./analytics"
 
 def getString(x):
     if x=="01":
