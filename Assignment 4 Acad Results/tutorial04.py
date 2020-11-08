@@ -94,12 +94,11 @@ for i in roll_no:
 				sub = sem.loc[j]
 				num+=sub['Credits']*fun(sub['Grade'])
 				credi+=sub['Credits']
-			if credi==0:
-				pat = './grades/'+file_name1
-				os.remove(pat)
-				break
-			spi=round(num/credi,2)
-			cpi = round((cred_till_now*cpi + credi*spi)/(cred_till_now+credi),2)
+			spi=0
+			if credi!=0:
+				spi=round(num/credi,2)
+			if (cred_till_now+credi)!=0:
+				cpi = round((cred_till_now*cpi + credi*spi)/(cred_till_now+credi),2)
 			cred_till_now+=credi
 			df3 = pd.DataFrame([[i,credi,credi,spi,cred_till_now,cred_till_now,cpi]])
 			tem_file = './grades/'+file_name1
