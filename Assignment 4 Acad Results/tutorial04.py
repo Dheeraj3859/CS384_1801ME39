@@ -14,12 +14,11 @@ def create_delete_grade_folder():
 create_delete_grade_folder()
 
 df = pd.read_csv('acad_res_stud_grades.csv')
-print(df.head())
-df.drop(['sl','timestamp','year'],axis=1,inplace=True)
-print(df.head())
-print(len(df))
 
-for i in range(len(df)-30000):
+df.drop(['sl','timestamp','year'],axis=1,inplace=True)
+
+
+for i in range(len(df)):
 	ro = df.loc[i]
 	roll_no=ro['roll']
 	file_name1 = roll_no+'_'+'individual'+'.csv'
@@ -65,9 +64,9 @@ def fun(s):
 		return 0
 
 roll_no = df['roll'].unique()
-print(len(roll_no))
+#print(len(roll_no))
 for i in roll_no:
-	print(i)
+	#print(i)
 	file_name1=i+'_'+'overall'+'.csv'
 	if os.path.exists(os.path.join(path,file_name1))==False:
 		st = 'Roll: '+i
@@ -95,6 +94,10 @@ for i in roll_no:
 				sub = sem.loc[j]
 				num+=sub['Credits']*fun(sub['Grade'])
 				credi+=sub['Credits']
+			if credi==0:
+				pat = './grades/'+file_name1
+				os.remove(pat)
+				break
 			spi=round(num/credi,2)
 			cpi = round((cred_till_now*cpi + credi*spi)/(cred_till_now+credi),2)
 			cred_till_now+=credi
