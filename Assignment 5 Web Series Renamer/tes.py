@@ -1,6 +1,6 @@
 import os
 import re
-path = './Subtitles/Sherlock'
+path = './Subtitles/Suits'
 files = os.listdir(path)
 for f in files:
 	print(f)
