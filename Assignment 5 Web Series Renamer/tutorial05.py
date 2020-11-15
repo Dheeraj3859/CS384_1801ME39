@@ -163,7 +163,45 @@ def rename_Sherlock(folder_name):
 		dest_file=os.path.join(path,res)
 		os.rename(source_file,dest_file)
 
+def rename_FIR(folder_name):
+	path = './Subtitles/FIR'
+	files = os.listdir(path)
+	season_padding=int(input())
+	episode_padding=int(input())
+	for f in files:
+		x=f.split('-')
+		res=""
+		x=[k.strip() for k in x]
+		#print(x[len(x)-1])
+		res+=x[0]+' '
+		ep=""
+		for l in x:
+			if 'Episode' in l and 'Full' not in l:
+				ep=l
+				break
+			elif 'Ep' in l:
+				ep=l
+				break
+		ep_lst = ep.split(' ')
+		#print(ep_lst)
+		
+		epnum = ep_lst[1] 
+		res_ep=""
+		for i in range(episode_padding-len(epnum)):
+			res_ep+='0'
+		res_ep+=epnum
+		res+='Episode '+res_ep
+		if 'srt' in x[len(x)-1]:
+			res+='.srt'
+		else:
+			res+='.mp4'
+		#print(res)
+		source_file=os.path.join(path,f)
+		dest_file=os.path.join(path,res)
+		os.rename(source_file,dest_file)
+		
 
+    # rename Logic
 title = input()
 if title=='Game of Thrones':
 	rename_Game_of_Thrones(title)
@@ -173,3 +211,5 @@ if title=='Suits':
 	rename_Suits(title)
 if title=='Sherlock':
 	rename_Sherlock(title)
+if title=='FIR':
+	rename_FIR(title)
