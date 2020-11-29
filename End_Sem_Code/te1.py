@@ -10,12 +10,12 @@ def get_padded_string(num):
     else:
         return '0'+st
 
-q.put(('varsha','1801cs69'))
-q.put(('sunny','180ME45'))
-
-while q.empty()==False:
-	x=q.get()
-	print(x)
-
-
-	
+def extract_number(st):
+    x=st.split('_')
+    x1=x[1].split('.')
+    re=x1[0][1:]
+    return re
+s="Group_G01.csv"
+x=int(extract_number(s))
+if x==1:
+	print("ok")
