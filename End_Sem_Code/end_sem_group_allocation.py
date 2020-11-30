@@ -218,6 +218,6 @@ def group_allocation(filename, number_of_groups):
     os.remove('./groups/stats grouping.csv')
 
 filename="Btech_2020_master_data.csv"
-number_of_groups = int(input("Enter the number of groups\n"))
+number_of_groups = 12
 group_allocation(filename, number_of_groups)
 
