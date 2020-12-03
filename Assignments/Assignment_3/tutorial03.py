@@ -341,14 +341,5 @@ def new_file_sort():
 
 #new_file_sort()
 
-del_create_analytics_folder()
-course()
-country()
-email_domain_extract()
-gender()
-dob()
-state()
-blood_group()
-new_file_sort()
 
 
