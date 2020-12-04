@@ -335,7 +335,7 @@ def login():
 	c.execute("SELECT * FROM project1_registration")
 	lst = c.fetchall()
 	flag=0
-	print(lst)
+	#print(lst)
 	for data in lst:
 		if username in data and hash_pass in data:
 			student_name=data[0]
