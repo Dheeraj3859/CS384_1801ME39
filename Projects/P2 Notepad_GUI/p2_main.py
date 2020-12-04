@@ -6,6 +6,8 @@ from tkinter.filedialog import askopenfilename, asksaveasfilename
 import datetime
 import time
 import os
+global dic
+dic={}
 def newFile():
 	global file
 	root.title("Untitled-Notepad")
@@ -165,7 +167,12 @@ def char_count():
 def created_time():
 	global file
 	ctime = time.ctime(os.path.getctime(file))
-	showinfo("Created time of the file is ",ctime)
+	if file in dic:
+		showinfo("Created time of the file is ",dic[file])
+	else:
+		dic[file] = ctime
+		showinfo("Created time of the file is ",dic[file])
+	
 def modified_time():
 	global file
 	mtime = time.ctime(os.path.getmtime(file))
