@@ -118,7 +118,7 @@ def fun_input():
 	if len(user_response)!=0 and user_response!='-1':
 		user_choices[q_index]=user_response
 		
-	next_flag=input(("enter the question number which you want to go or press n to to to next question or type submit to submit the quiz\n"))
+	next_flag=input(("enter the question number which you want to go or press n to go to next question or type submit to submit the quiz\n"))
 	if next_flag=='submit':
 		submit=1
 		return
