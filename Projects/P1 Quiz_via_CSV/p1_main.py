@@ -177,11 +177,12 @@ def quizwise_responses():
 		if m_c==-1:
 			m_c=0
 		correct_str=""
+		fl=0
 		if int(user_choices[i])==int(correct_answers[i]) and int(user_choices[i])!=-1:
 			correct_str="Correct Choices"
 		elif (int(user_choices[i])!=int(correct_answers[i]) and int(user_choices[i])!=-1) or (int(user_choices[i])==-1 and v['compulsory']=='y') :	
 			correct_str="Wrong Choices"
-		elif int(user_choices[i])=='-1' and v['compulsory']=='n':
+		elif int(user_choices[i])==-1:
 			correct_str="Unattempted"
 		df1 = pd.DataFrame([[v[l[0]],v[l[1]],v[l[2]],v[l[3]],v[l[4]],v[l[5]],v[l[6]],v[l[7]],v[l[8]],v[l[9]],m_c,to,correct_str]])
 		df1.to_csv(path,mode='a+',index=False,header=False)
