@@ -202,14 +202,27 @@ def rename_FIR(folder_name):
 		
 
     # rename Logic
-title = input('Enter the title\n')
-if title=='Game of Thrones':
-	rename_Game_of_Thrones(title)
-if title=='How I Met Your Mother':
-	rename_How_I_Met_Your_Mother(title)
-if title=='Suits':
-	rename_Suits(title)
-if title=='Sherlock':
-	rename_Sherlock(title)
-if title=='FIR':
+
+#menu
+print("The serial number corresponding to each web series is given below")
+print("1 FIR")
+print("2 Game of Thrones")
+print("3 How I Met Your Mother")
+print("4 Sherlock")
+print("5 Suits")
+num = int(input("Enter a number corresponding to the webseries\n"))
+if num==1:
+	title='FIR'
 	rename_FIR(title)
+if num==2:
+	title='Game of Thrones'
+	rename_Game_of_Thrones(title)
+if num==3:
+	title='How I Met Your Mother'
+	rename_How_I_Met_Your_Mother(title)
+if num==4:
+	title='Sherlock'
+	rename_Sherlock(title)
+if num==5:
+	title='Suits'
+	rename_Suits(title)
